@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.21'
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.novoda:bintray-release:{latest_version}'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.8.4"
+}
+
+bintray {
+    user = 'dragossusi'
+    key = '17248c1da94580019c6176cc59818986e4a3c124'
+//    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'BaseMVPAndroid'
+        userOrg = user
+        licenses = ['Apache-2.0']
+        version {
+            name = '0.1'
+            desc = 'Base classes for mvp android'
+            userOrg 'dragossusi'
+//            vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
+//            vcsTag = '0.1'
+//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
